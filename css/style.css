@@ -1,0 +1,270 @@
+@charset "UTF-8";
+/* style.css */
+/* Variables */
+/* Bootstrap colors */
+/* Icons */
+.fas.fa-file-pdf {
+  color: #e6441a;
+}
+
+.fas.fa-file-powerpoint {
+  color: #D04423;
+}
+
+.fab.fa-github {
+  color: #333;
+}
+
+/* Size specific settings */
+@media only screen and (min-width: 768px) {
+  html {
+    font-size: 100%;
+  }
+  img.img-portrait {
+    width: 70%;
+    max-width: 224px;
+    max-height: 224px;
+  }
+  #sidebar {
+    width: 280px;
+    min-width: 280px;
+    max-width: 280px;
+    background: #222244;
+    color: #fff !important;
+    padding: 10px 10px;
+    position: fixed;
+    height: 100vh;
+    z-index: 999;
+    transition: all 0.3s;
+  }
+  #content {
+    width: 100%;
+    padding-left: 280px;
+    min-height: 100vh;
+    transition: all 0.3s;
+  }
+  hr.over-menu {
+    border: 1px solid rgba(255, 255, 255, 0.75);
+    width: 80%;
+  }
+}
+
+@media only screen and (min-width: 321px) and (max-width: 768px) {
+  html {
+    font-size: 110%;
+  }
+  img.img-portrait {
+    width: 50%;
+    max-width: 250px;
+    max-height: 250px;
+  }
+  #sidebar {
+    background: #222244;
+    color: #fff;
+  }
+  #content {
+    width: 100%;
+  }
+  hr.over-menu {
+    display: none;
+  }
+}
+
+/* General settings */
+body {
+  font-size: 1.0rem;
+  font-family: "Source Sans Pro", "メイリオ", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Meiryo, sans-serif;
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+h3 {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #17a2b8;
+  margin: 2px;
+}
+
+.accent {
+  color: #bd2130;
+  margin: 0px !important;
+  padding: 0px !important;
+}
+
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0px;
+  position: relative;
+}
+
+.row {
+  padding: 0.2rem;
+}
+
+#intro {
+  padding: 0.0rem 1.0rem;
+  text-align: center;
+}
+
+#intro .icons * {
+  color: #fff !important;
+  font-weight: normal !important;
+}
+
+#intro .google-scholar * {
+  font-weight: normal !important;
+}
+
+/* GitHub icon */
+.icon {
+  margin: 0px 5px;
+}
+
+#block-item {
+  padding: 1.0rem 1.5rem;
+}
+
+#block-item .heading {
+  font-size: 2rem;
+  font-weight: bold;
+  position: relative;
+  padding-left: 1em;
+  color: #224466;
+}
+
+#block-item .heading:after {
+  position: absolute;
+  top: 1.5rem;
+  left: 0;
+  transform: translateY(-50%);
+  content: '';
+  width: 20px;
+  height: 20px;
+  background: #224466;
+  border-radius: 100%;
+}
+
+#block-item .body {
+  text-align: justify;
+}
+
+#well-intro {
+  background: #fff;
+}
+
+.footer {
+  width: 100%;
+  color: #333;
+  padding: 10px;
+  text-align: center;
+}
+
+.panel-info {
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.panel-info .panel-heading {
+  font-size: 16pt;
+  font-weight: bold;
+  color: #fff;
+  padding: 5px 15px;
+  background-color: #224466;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+
+.panel-info .panel-body {
+  padding: 5px 15px;
+}
+
+/* Links */
+a {
+  color: #2288aa;
+}
+
+a:hover {
+  color: #1a6680;
+  text-decoration: none;
+}
+
+nav.navbar-nav {
+  text-align: center;
+}
+
+.navbar-nav {
+  width: 100%;
+  padding: 5px 15px;
+  flex-direction: column !important;
+}
+
+.nav-link {
+  color: #fff !important;
+  padding: 2px 0px;
+}
+
+.nav-link:hover {
+  color: #ccc !important;
+}
+
+.navbar-toggler-icon {
+  color: #fff;
+  display: inline;
+}
+
+li.nav-item {
+  position: relative;
+}
+
+/* Card */
+.card-header {
+  font-size: 1.1rem;
+  color: #fff;
+  font-weight: bold;
+  background-color: #343a40;
+}
+
+.card-body {
+  padding: 1.0rem 1.0rem;
+}
+
+/* Project */
+.project-item {
+  margin-bottom: 20px;
+  padding: 5px;
+}
+
+.project-item .project-title {
+  font-size: 1.0rem;
+  font-weight: bold;
+}
+
+.award-name {
+  margin-left: 10px;
+}
+
+.pub span {
+  margin-right: 5px;
+}
+
+.pub .name, .pub .link {
+  display: inline-block;
+}
+
+.pub .journal {
+  font-style: italic;
+}
+
+/* Panel setting */
+.panel-footer {
+  background-color: #fff;
+}

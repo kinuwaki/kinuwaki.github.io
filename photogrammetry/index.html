@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Digital Human</title>
+    <meta keywords="Digital Human">
+    <meta description="Digital Human Project">
+  </head>
+  <body>
+  <h1>Practical Digital Human Project</h1>
+
+
+  <h2>Quick Introduction</h2>
+  <img src="./20190313135644.jpg" width="30%"><br>
+  In this page, I will try to break down the digital human technology using the similar workflow as game production is using. In order to achieve realistic digital human, it is necessary to combine various technologies, and I believe that just digging each of them will be enough for research topic. We would like to present an application paper if we get some results. We are not looking for innovative algorithms, but we focus on build a robust pipeline to achive the current state of the art digital human.<br>
+  
+  We introduce some useful links to understand what current game industry is doing.<br>
+  1) <a href="https://techblog.sega.jp/entry/2018/12/26/100000">龍が如くにおけるキャラクター制作ワークフロー</a><br>
+  2) <a href="https://cedil.cesa.or.jp/cedil_sessions/view/1545">BIOHAZARD 7 - PHOTOGRAMMETRY -</a><br>
+  3) <a href="https://magazine.cygames.co.jp/archives/600">スキャンスタジオ【社内設備特集Vol.1】</a><br>
+  4) <a href="https://magazine.cygames.co.jp/archives/14013">「LightCage」採用の最先端フェイススキャナー導入！開発と直結した圧倒的フォトリアルな素材づくりに迫る【社内設備特集Vol.4】</a><br>
+  5) <a href="https://developer.nvidia.com/gtc/2020/video/s22115-vid">Generative Face Models from Light Stage Scans</a><br>
+  6) <a href="https://cgworld.jp/feature/201908-gg2019-dmc5.html">フォトグラメトリーでつくる『デビル メイ クライ 5』のキャラクターモデル</a><br>
+
+  <h2>Captruing Devices & 3D Reconstruction</h2>
+  <img src="./dslrs.jpg" width="30%"><br>
+  Recenly, many game companies are building own capturing studio using 30-50 DSLRs. They send captured images to <a href="https://www.capturingreality.com/">RealityCapture</a> or <a href="https://oakcorp.net/agisoft/">PhotoScan</a>. These softwares are finding matching point, estimating camera parameters, and finally building a large number of point clouds by solving ICP.<br>
+  We are considering a technique using a few DSLRs with polarized light as an alternative to the above approach. This is mostly inspired by <a href="https://studios.disneyresearch.com/2020/08/14/single-shot-high-quality-facial-geometry-and-skin-appearance-capture/">Disney rsearch work</a>. For first reason, We will use <a hreaf="https://www.itmedia.co.jp/news/articles/1909/10/news132.html">the pixel shift function</a> of Sony's α7ⅳ series that augments 9 DSLRs resoltuions for single shot. For second reason, we use PatchMatch stereo for <a href="https://github.com/YinlinHu/CPM">one</a> or <a href="https://github.com/ivanbergonzani/patch-match-stereo">another one</a> that derive per pixel depth will get enough number of point clouds.<br>
+  The reason for using a polarizer is related to the later inverse rendering session, but it is to extract roughness textures and normal maps efficiently. The current capture facility can only extract albedo textures.
+
+  <h2>Shrink & Wrapping</h2>
+  Once you have a large number of point clouds, you can Shrink & Wrap them. Most productions nowadays have a base mesh that serves as a template for the character, organized by the designer in a neat topology, which can be fitted to the point cloud to control the polygon count budget.
+
+  <h2>Inverse Rendering</h2>
+  Since our capture setup is simpler than LightStage's, we use Inverse Rendering to restore specular and normal textures. Mistuba2 is open source and can do inverse rendering, so we hope to extend it to do this.
+
+  <h2>Facial Animation</h2>
+  <img src="./image7.jpg" width="30%"><br>
+  Facial animation is completely different topics. facial animation is basically creating blendshapes that complement to create facial expressions. In academia, we often shoot with 20 typical facial expressions and mix them together to create animations.
+  However, just note the actual production process is much more complicated than this, including the generation of huge number of blendshapes, situational rigs, and hand-applied animation.<br>
+  1)<a href="https://www.slideshare.net/capcom_rd/ss-139179580">緻密なキャラクターの表情や破壊表現のためのコンピュートシェーダによるメッシュアニメーション</a><br>
+  2)<a href="https://github.com/zhuhao-nju/facescape">FaceScape: a Large-Scale High Quality 3D Face Dataset and Detailed Riggable 3D Face Prediction</a><br>
+
+  <h2>Real Time Rendering</h2>
+  <img src="./ue4rendering.jpg" width="30%"><br>
+  Game developers love real-time rendering with shaders, so there has been a lot of research on human rendering. Real-time renderers are reasonably hard to write, so it may be more efficient to simply follow the <a href="https://docs.unrealengine.com/ja/Resources/Showcases/DigitalHumans/index.html">Unreal Engine 4 digital human system</a> to keep the cost of the work down. Without having to write huge amounts of shaders, it is possible to move realistic faces by simply pulling in texture and animation data in blueprints. However, if you eventually want to make a real-time renderer for these areas using DirectX or Vulkan, please try it. I think it will be very advantageous for you to get a job!<br>
+ 1) <a href="http://www.iryoku.com/next-generation-life">NEXT GENERATION LIFE</a><br>
+
+
+  <h2>Hair Modeling & Simulation</h2>
+  <img src="./ornatrix.jpg" width="30%"><br>
+  Hair Modeling is another completely different topic. Typically, we model strands by hand, looking at pictures, using <a href="https://www.youtube.com/watch?v=rfxt0ubgLXc">Maya xGen</a> or <a href="https://ephere.com/plugins/autodesk/maya/ornatrix/">Ornatrix</a> or other middleware. There is a lot of research on automating the creation of strands from photos, but I get the impression that production never used these algorithms and that everything is created by artist hand. I guess there is a huge quality gap between academic and prodcution. If you want to work into this field, it is important to have a sincere attitude towards production.<br>
+  As for hair simulation, EA frostbite are spending time for this area. These area will requre a lot of fundamental knowldges of physical animation area and some of you want to do that.<br>
+ 1) <a href="https://advances.realtimerendering.com/s2019/hair_presentation_final.pdf">Strand-based Hair Rendering in Frostbite</a><br>
+ 2) <a href="https://www.ea.com/frostbite/news/the-future-of-hair-rendering-technology-in-frostbite">How Frostbite is Advancing the Future of Hair Rendering Technology</a><br>
+
+  <h2>Teeth & Eye capturing and simulation</h2>
+  We may touch these topics some day. However, I don't think that the eyes and teeth are something that will dramatically change the impression, and I think that a certain level of quality can be ensured by using template models. Disney research are doing a lot of these capture researches including eye or teeth capturing.<br>
+ 1) <a href="https://studios.disneyresearch.com/category/capture/">Disney Research Studio</a><br>
+
+
+  <h4>email: ShinichiKinuwaki [at] gmail.com</h4>
+  </body>
+</html>

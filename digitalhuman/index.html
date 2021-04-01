@@ -14,17 +14,17 @@
   In this page, I will try to break down the digital human technology using the similar workflow as game production is using. In order to achieve realistic digital human, it is necessary to combine various technologies, and I believe that just digging each of them will be enough for research topic. We would like to present an application paper if we get some results. We are not looking for innovative algorithms, but we focus on build a robust pipeline to achive the current state of the art digital human.<br>
   
   We introduce some useful links to understand what current game industry is doing.<br>
-  1) <a href="https://techblog.sega.jp/entry/2018/12/26/100000">—´‚ª”@‚­‚É‚¨‚¯‚éƒLƒƒƒ‰ƒNƒ^[§ìƒ[ƒNƒtƒ[</a><br>
+  1) <a href="https://techblog.sega.jp/entry/2018/12/26/100000">é¾ãŒå¦‚ãã«ãŠã‘ã‚‹ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼åˆ¶ä½œãƒ¯ãƒ¼ã‚¯ãƒ•ãƒ­ãƒ¼</a><br>
   2) <a href="https://cedil.cesa.or.jp/cedil_sessions/view/1545">BIOHAZARD 7 - PHOTOGRAMMETRY -</a><br>
-  3) <a href="https://magazine.cygames.co.jp/archives/600">ƒXƒLƒƒƒ“ƒXƒ^ƒWƒIyĞ“àİ”õ“ÁWVol.1z</a><br>
-  4) <a href="https://magazine.cygames.co.jp/archives/14013">uLightCagevÌ—p‚ÌÅæ’[ƒtƒFƒCƒXƒXƒLƒƒƒi[“±“üIŠJ”­‚Æ’¼Œ‹‚µ‚½ˆ³“|“IƒtƒHƒgƒŠƒAƒ‹‚È‘fŞ‚Ã‚­‚è‚É”—‚éyĞ“àİ”õ“ÁWVol.4z</a><br>
+  3) <a href="https://magazine.cygames.co.jp/archives/600">ã‚¹ã‚­ãƒ£ãƒ³ã‚¹ã‚¿ã‚¸ã‚ªã€ç¤¾å†…è¨­å‚™ç‰¹é›†Vol.1ã€‘</a><br>
+  4) <a href="https://magazine.cygames.co.jp/archives/14013">ã€ŒLightCageã€æ¡ç”¨ã®æœ€å…ˆç«¯ãƒ•ã‚§ã‚¤ã‚¹ã‚¹ã‚­ãƒ£ãƒŠãƒ¼å°å…¥ï¼é–‹ç™ºã¨ç›´çµã—ãŸåœ§å€’çš„ãƒ•ã‚©ãƒˆãƒªã‚¢ãƒ«ãªç´ æã¥ãã‚Šã«è¿«ã‚‹ã€ç¤¾å†…è¨­å‚™ç‰¹é›†Vol.4ã€‘</a><br>
   5) <a href="https://developer.nvidia.com/gtc/2020/video/s22115-vid">Generative Face Models from Light Stage Scans</a><br>
-  6) <a href="https://cgworld.jp/feature/201908-gg2019-dmc5.html">ƒtƒHƒgƒOƒ‰ƒƒgƒŠ[‚Å‚Â‚­‚éwƒfƒrƒ‹ ƒƒC ƒNƒ‰ƒC 5x‚ÌƒLƒƒƒ‰ƒNƒ^[ƒ‚ƒfƒ‹</a><br>
+  6) <a href="https://cgworld.jp/feature/201908-gg2019-dmc5.html">ãƒ•ã‚©ãƒˆã‚°ãƒ©ãƒ¡ãƒˆãƒªãƒ¼ã§ã¤ãã‚‹ã€ãƒ‡ãƒ“ãƒ« ãƒ¡ã‚¤ ã‚¯ãƒ©ã‚¤ 5ã€ã®ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ãƒ¢ãƒ‡ãƒ«</a><br>
 
   <h2>Captruing Devices & 3D Reconstruction</h2>
   <img src="./dslrs.jpg" width="30%"><br>
   Recenly, many game companies are building own capturing studio using 30-50 DSLRs. They send captured images to <a href="https://www.capturingreality.com/">RealityCapture</a> or <a href="https://oakcorp.net/agisoft/">PhotoScan</a>. These softwares are finding matching point, estimating camera parameters, and finally building a large number of point clouds by solving ICP.<br>
-  We are considering a technique using a few DSLRs with polarized light as an alternative to the above approach. This is mostly inspired by <a href="https://studios.disneyresearch.com/2020/08/14/single-shot-high-quality-facial-geometry-and-skin-appearance-capture/">Disney rsearch work</a>. For first reason, We will use <a hreaf="https://www.itmedia.co.jp/news/articles/1909/10/news132.html">the pixel shift function</a> of Sony's ƒ¿7úC series that augments 9 DSLRs resoltuions for single shot. For second reason, we use PatchMatch stereo for <a href="https://github.com/YinlinHu/CPM">one</a> or <a href="https://github.com/ivanbergonzani/patch-match-stereo">another one</a> that derive per pixel depth will get enough number of point clouds.<br>
+  We are considering a technique using a few DSLRs with polarized light as an alternative to the above approach. This is mostly inspired by <a href="https://studios.disneyresearch.com/2020/08/14/single-shot-high-quality-facial-geometry-and-skin-appearance-capture/">Disney rsearch work</a>. For first reason, We will use <a hreaf="https://www.itmedia.co.jp/news/articles/1909/10/news132.html">the pixel shift function</a> of Sony's Î±7â…³ series that augments 9 DSLRs resoltuions for single shot. For second reason, we use PatchMatch stereo for <a href="https://github.com/YinlinHu/CPM">one</a> or <a href="https://github.com/ivanbergonzani/patch-match-stereo">another one</a> that derive per pixel depth will get enough number of point clouds.<br>
   The reason for using a polarizer is related to the later inverse rendering session, but it is to extract roughness textures and normal maps efficiently. The current capture facility can only extract albedo textures.
 
   <h2>Shrink & Wrapping</h2>
@@ -37,7 +37,7 @@
   <img src="./image7.jpg" width="30%"><br>
   Facial animation is completely different topics. facial animation is basically creating blendshapes that complement to create facial expressions. In academia, we often shoot with 20 typical facial expressions and mix them together to create animations.
   However, just note the actual production process is much more complicated than this, including the generation of huge number of blendshapes, situational rigs, and hand-applied animation.<br>
-  1)<a href="https://www.slideshare.net/capcom_rd/ss-139179580">ãk–§‚ÈƒLƒƒƒ‰ƒNƒ^[‚Ì•\î‚â”j‰ó•\Œ»‚Ì‚½‚ß‚ÌƒRƒ“ƒsƒ…[ƒgƒVƒF[ƒ_‚É‚æ‚éƒƒbƒVƒ…ƒAƒjƒ[ƒVƒ‡ƒ“</a><br>
+  1)<a href="https://www.slideshare.net/capcom_rd/ss-139179580">ç·»å¯†ãªã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®è¡¨æƒ…ã‚„ç ´å£Šè¡¨ç¾ã®ãŸã‚ã®ã‚³ãƒ³ãƒ”ãƒ¥ãƒ¼ãƒˆã‚·ã‚§ãƒ¼ãƒ€ã«ã‚ˆã‚‹ãƒ¡ãƒƒã‚·ãƒ¥ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³</a><br>
   2)<a href="https://github.com/zhuhao-nju/facescape">FaceScape: a Large-Scale High Quality 3D Face Dataset and Detailed Riggable 3D Face Prediction</a><br>
 
   <h2>Real Time Rendering</h2>

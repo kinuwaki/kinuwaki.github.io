@@ -23,7 +23,7 @@
   6) <a href="https://cgworld.jp/feature/201908-gg2019-dmc5.html">フォトグラメトリーでつくる『デビル メイ クライ 5』のキャラクターモデル</a><br>
 
   <h2>Captruing Devices & 3D Reconstruction</h2>
-  <img src="./dslrs.jpg" width="30%"><br>
+  <img src="./S__37306371.jpg" width="20%"><br>
   Recenly, many game companies are building own capturing studio using 30-50 DSLRs. They send captured images to <a href="https://www.capturingreality.com/">RealityCapture</a> or <a href="https://oakcorp.net/agisoft/">PhotoScan</a>. These softwares are finding matching point, estimating camera parameters, and finally building a large number of point clouds by solving ICP.<br>
   We are considering a technique using stereo matching algorighm and a few DSLRs with polarized light as an alternative to the above approach. This is mostly inspired by some disney rsearch works. For capturing device, we plan to use <a href="https://www.itmedia.co.jp/news/articles/1909/10/news132.html">the pixel shift function</a> of Sony's α7ⅳ series that augments 9 DSLRs resoltuions for single shot.<br>
   Until we have good state of art stereo matching algorithm, we plan to use RealityCapture to get point clouds. Commercial middleware is based on accumulated know-how, so it can provide stable and high performance results, but we would like tdevelop our own algorithm.<br>
@@ -31,7 +31,7 @@
   2)<a href="https://studios.disneyresearch.com/wp-content/uploads/2019/03/Practical-Dynamic-Facial-Appearance-Modeling-and-Acquisition-Paper1.pdf">Practical Dynamic Facial Appearance Modeling and Acquisition</a><br>
 
   <h2>Shrink & Wrapping</h2>
-  <img src="./arap.jpg" width="30%"><br>
+  <video src="./MeshLab_2021-04-08.mp4" controls width="30%"></video><br>
   Once you have a large number of point clouds, we will apply Shrink & Wrap algorithm. Most productions nowadays have a base mesh that serves as a template for the character, organized by the designer in a neat topology, which can be fitted to the point cloud to control the polygon count budget. Production often uses <a href="https://knowledge.autodesk.com/ja/support/maya/learn-explore/caas/CloudHelp/cloudhelp/2018/JPN/Maya-Modeling/files/GUID-832864E7-A266-4EA8-92A1-7D570759D74E-htm.html">Maya</a> or <a href="https://www.russian3dscanner.com/">R3DS Wrap</a> to get data and we assume they follow as rigid as algorithm. <br>
   Until we have good state of ARAP algorithm, we plan to use Maya or R3DS to fit our model to point clouds. Commercial middleware is based on accumulated know-how, so it can provide stable and high performance results, but we would like to  develop our own algorithm.<br>
   1)<a href="http://www.cs.tau.ac.il/~levin/arap.pdf">As-Rigid-As-Possible Shape Interpolation</a><br>
@@ -66,7 +66,7 @@
  1) <a href="https://studios.disneyresearch.com/category/capture/">Disney Research Studio</a><br>
 
   <h2>Others</h2>
-  Realistic human is more trending. 
+  Realistic human is more trending. <br>
   1) <a href="https://www.unrealengine.com/ja/digital-humans">MetaHumans</a><br>
   2) <a href="https://www.reallusion.com/jp/character-creator/">Character Creator</a><br>
 

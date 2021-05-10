@@ -11,7 +11,7 @@
 
 
   <h2>Quick Introduction</h2>
-  <img src="./20190313135644.jpg" width="30%"><br>
+  <video src="./MeshLab_2021-04-08.mp4" poster="./MeshLab_2021-04-08.jpg" controls width="30%"></video><br>
   In this page, I will try to break down the digital human technology by using the similar workflow as game production is using. In order to achieve realistic digital human, it is necessary to combine various technologies, and I believe that just digging each of them will be enough for research topic. We would like to present an application paper if we get some results. We are not looking for innovative algorithms, but we focus on build a robust pipeline to achive the current state of the art digital human.<br>
   
   We introduce some useful links to understand what current game industry is doing.<br>
@@ -32,13 +32,13 @@
   2)<a href="https://studios.disneyresearch.com/wp-content/uploads/2019/03/Practical-Dynamic-Facial-Appearance-Modeling-and-Acquisition-Paper1.pdf">Practical Dynamic Facial Appearance Modeling and Acquisition</a><br>
 
   <h2>Shrink & Wrapping</h2>
-  <video src="./MeshLab_2021-04-08.mp4" poster="./MeshLab_2021-04-08.jpg" controls width="30%"></video><br>
+  <img src="./arap.jpg" width="30%"> <br>
   Once you have a large number of point clouds, we will apply Shrink & Wrap algorithm. Most productions nowadays have a base mesh that serves as a template for the character, organized by the designer in a neat topology, which can be fitted to the point cloud to control the polygon count budget. Production often uses <a href="https://knowledge.autodesk.com/ja/support/maya/learn-explore/caas/CloudHelp/cloudhelp/2018/JPN/Maya-Modeling/files/GUID-832864E7-A266-4EA8-92A1-7D570759D74E-htm.html">Maya</a> or <a href="https://www.russian3dscanner.com/">R3DS Wrap</a> to fit data and we assume they use "<b>as rigid as possible (ARAP)</b>" algorithm. <br>
   Until we have good state of ARAP algorithm, we plan to use Maya or R3DS to fit our model to point clouds. Commercial middleware is based on accumulated know-how, so it can provide stable and high performance results, but we would like to develop our own algorithm.<br>
   1)<a href="http://www.cs.tau.ac.il/~levin/arap.pdf">As-Rigid-As-Possible Shape Interpolation</a><br>
 
   <h2>Normal Map & Roughness Map</h2>
-  In physics based shading, one normal map is ideal situation, but getting an accurate signel normal map for a face is difficult, and there are many ways to get normal maps in different levels.  Debevec says we need to find the Specular Normal to get the mesostrcuture normal of the expression. This is based on the "Rapid acquisition of specular and diffuse normal maps from polarized spherical gradient illumination" paper that says Photometric Stereo solution of albedo normal gave only insufficient results compared to specular normal. And it is accepted as the standard in the film industry to seek this Specular Normal. On the other hand, the game industry has not yet adopted such an expensive workflow and is still using <a href="https://xnormal.net/">xNormal</a> to derive Diffuse Normal and compute Roughness Map using <a href="http://boundingboxsoftware.com/materialize/">Materialize</a>. The table below is a simple summary of this area.
+  In physics based shading, single normal map is ideal solution, but getting an accurate signel normal map for a face is difficult, and there are many ways to get normal maps in different levels.  Debevec says photometric stereo solution of albedo normal gave only insufficient results compared to specular normal that can derive the mesostrcuture properly. And this specular normal approache is accepted as the standard in the film industry. On the other hand, the game industry has not yet used such an expensive workflow and is still using diffuse normal based on stereo matching, then derive diffuse normal using <a href="https://xnormal.net/">xNormal</a> and compute roughness map using <a href="http://boundingboxsoftware.com/materialize/">Materialize</a>. The table below is a simple summary of this area.
   <table border="1">
     <tr>
       <th>Quality</th>

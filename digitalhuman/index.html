@@ -38,7 +38,7 @@
   1)<a href="http://www.cs.tau.ac.il/~levin/arap.pdf">As-Rigid-As-Possible Shape Interpolation</a><br>
 
   <h2>Normal Map & Roughness Map</h2>
-  In physics based shading, single normal map is ideal solution, but getting an accurate signel normal map for a face is difficult, and there are many ways to get normal maps in different levels.  Debevec says photometric stereo solution of albedo normal gave only insufficient results compared to specular normal that can derive the mesostrcuture properly. And this specular normal approache is accepted as the standard in the film industry. On the other hand, the game industry has not yet used such an expensive workflow and is still using diffuse normal based on stereo matching, then derive diffuse normal using <a href="https://xnormal.net/">xNormal</a> and compute roughness map using <a href="http://boundingboxsoftware.com/materialize/">Materialize</a>. The table below is a simple summary of this area.
+  In physics based shading, single normal map is ideal solution, but getting an accurate signel normal map for a face is difficult, and there are many ways to get normal maps in different levels.  Debevec says photometric stereo solution of albedo normal gave only insufficient results compared to specular normal that can derive the mesostrcuture properly. And this specular normal approache is accepted as the standard in the film industry. On the other hand, the game industry has not yet used such an expensive workflow and is still deriving approximated gometry with albedo map based on stereo matching, then derive albedo normal using <a href="https://xnormal.net/">xNormal</a> and compute roughness map using <a href="http://boundingboxsoftware.com/materialize/">Materialize</a>. The table below is a simple summary of this area.
   <table border="1">
     <tr>
       <th>Quality</th>
@@ -75,7 +75,8 @@
       <td>Single Shot</td>
       <td><a href="https://cgl.ethz.ch/publications/papers/paperBee10.php">High-Quality Single-Shot Capture of Facial Geometry (Siggraph 2010)</a></td>
     </tr>
-  </table>
+  </table><br>
+  1)<a href="https://vgl.ict.usc.edu/Research/FaceScanning/EGSR2007_SGI_high.pdf">Rapid Acquisition of Specular and Diffuse Normal Maps from Polarized Spherical Gradient Illumination</a><br>
 
   <h2>Facial Animation</h2>
   <video src="./SimpleBlendShape_2021-04-13.mp4" poster="./SimpleBlendShape_2021-04-13.jpg" controls width="30%"></video><br>
@@ -93,7 +94,7 @@
 
   <h2>Hair Modeling & Simulation</h2>
   <img src="./maya_xgen.jpg" width="30%"><br>
-  Hair Modeling is another completely different topic. Typically, we model strands by hand, looking at pictures, using <a href="https://www.youtube.com/watch?v=rfxt0ubgLXc">Maya xGen</a> or <a href="https://ephere.com/plugins/autodesk/maya/ornatrix/">Ornatrix</a> or other middleware. There is a lot of research on automating the creation of strands from photos, but I get the impression that production never used these algorithms and that everything is created by artist hand. I guess there is a huge quality gap between academic and prodcution. If you want to work into this field, it is important to have a sincere attitude towards production.<br>
+  Hair Modeling is another completely different topic. Typically, we model strands by hand, looking at pictures, using <a href="https://www.youtube.com/watch?v=rfxt0ubgLXc">Maya xGen</a> or <a href="https://ephere.com/plugins/autodesk/maya/ornatrix/">Ornatrix</a>. There is a lot of research on automating the creation of strands from photos, but I get the impression that production never used these algorithms and that everything is created by artist hand. I guess there is a huge quality gap between academic and prodcution. If you want to work into this field, it is important to have a sincere attitude towards production.<br>
   As for hair simulation, EA frostbite are spending time for this area. These area will requre a lot of fundamental knowldges of physical animation area and some of you want to do that.<br>
  1) <a href="https://advances.realtimerendering.com/s2019/hair_presentation_final.pdf">Strand-based Hair Rendering in Frostbite</a><br>
  2) <a href="https://www.ea.com/frostbite/news/the-future-of-hair-rendering-technology-in-frostbite">How Frostbite is Advancing the Future of Hair Rendering Technology</a><br>
